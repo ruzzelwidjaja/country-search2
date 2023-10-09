@@ -1,5 +1,5 @@
 import React from 'react';
-import { comfortaa, baloo_da_2 } from './fonts';
+import { comfortaa, baloo_da_2 } from '../styles/fonts';
 
 export const Header: React.FC = () => {
   return (
