@@ -26,18 +26,18 @@ const CountryCard: React.FC<CountryCardProps> = ({ name, dialCode, capital, offi
           <div className='flex items-center'>
             <img src={`https://flagsapi.com/${twoLetterCode}/flat/64.png`}/>
             
-            <h2 className="pl-4 text-4xl font-semibold text-indigo-500">{name ?? 'No Name'}</h2>
+            <h2 className="pl-5 text-4xl font-semibold text-indigo-500">{name ?? 'No Name'}</h2>
           </div>
         </div>
 
-        <hr className="mt-2 mb-4" />
+        <hr className="mt-2 mb-4" /> {/* horizontal line  */} 
 
-        {/* Body */}
+        {/* Body (Country Details) */}
         <div className='flex flex-col w-full px-2'>
-            <div className='flex flex-row justify-between'>
+            <div className='flex flex-col sm:flex-row justify-between px-4 sm:px-0'>
                 
                 {/* Left Side Content */}
-                <div className='flex flex-1 flex-col pr-3'>
+                <div className='flex flex-1 flex-col mb-4 sm:mb-0 sm:pr-2'>
                     {/* Capital */}
                     <div className="flex justify-between items-center mb-4">
                         <div className="flex items-center">
@@ -50,7 +50,7 @@ const CountryCard: React.FC<CountryCardProps> = ({ name, dialCode, capital, offi
                     {/* Language */}
                     <div className="flex justify-between items-center">
                         <div className="flex items-center">
-                            <img src="icons/card/language.png" alt="Language Icon" className="h-5 w-5 mr-2" />
+                            <img src="icons/card/language2.png" alt="Language Icon" className="h-5 w-5 mr-2" />
                             <p className="text-black pl-0.5 text-lg">Language</p>
                         </div>
                         <p className="text-indigo-500 font-semibold text-lg">{officialLanguage ?? 'No Language'}</p>
@@ -58,10 +58,10 @@ const CountryCard: React.FC<CountryCardProps> = ({ name, dialCode, capital, offi
                 </div>
                 
                 {/* Vertical Line */}
-                <div className="h-auto bg-gray-200 mx-1 w-px self-stretch"></div>
+                <div className="hidden sm:block h-auto bg-gray-200 mx-1 w-px self-stretch"></div>
                 
                 {/* Right Side Content */}
-                <div className='flex flex-1 flex-col pl-3'>
+                <div className='flex flex-1 flex-col sm:pl-2'>
                     {/* Dial Code */}
                     <div className="flex justify-between items-center mb-4">
                         <div className="flex items-center">
@@ -86,9 +86,10 @@ const CountryCard: React.FC<CountryCardProps> = ({ name, dialCode, capital, offi
                 
             </div>
         </div>
+
         {/* end of Body  */} 
 
-        <hr className="my-4" />
+        <hr className="my-4" />  {/* horizontal line  */} 
 
         {/* Summary */}
         <div className='px-2'>

@@ -1,13 +1,15 @@
-'use client' // To use Client Side Rendering
+'use client' // To use Client Side Rendering. Default is Server Side Rendering
 
-import React, { useState, useCallback, useEffect} from 'react';
+import React, { useState, useCallback,} from 'react';
 import { countries_list } from './config/countries_list';
-import { Header } from './components/header';
-import { SearchInput } from './components/searchInput';
-import { SearchButton } from './components/searchButton';
-import { CountriesList } from './components/countriesList';
-import { WarningMessage } from './components/warningMessage';
-import CountryCard from './components/countryCard';
+import { 
+  Header, 
+  SearchInput, 
+  SearchButton, 
+  CountriesList, 
+  WarningMessage, 
+  CountryCard 
+} from './components/index';
 
 
 export type CountryData = {
@@ -70,9 +72,7 @@ export default function Home() {
 
   const getCountryByName = async (name: string) => {
     try {
-      const res = await fetch(`http://localhost:3000/api/countries/${name}`, {
-        cache: "no-store",
-      });
+      const res = await fetch(`http://localhost:3000/api/countries/${name}`);
 
       if (!res.ok) {
         throw new Error("Failed to fetch topic");
@@ -92,10 +92,10 @@ export default function Home() {
 
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center bg-[url('/background_images/crystal-blurred.jpg')] bg-cover bg-center h-screen">
+    <main className="min-h-screen flex flex-col items-center justify-center bg-[url('/background_images/clouds2.jpg')] bg-cover bg-center h-screen">
       <Header />
-      <form className="w-96 flex flex-col relative">
-        <div className="flex mb-2">
+      <form className="w-96 flex flex-col items-center relative">
+        <div className="flex mb-2 w-11/12">
           <SearchInput inputValue={inputValue} isValid={isValid} handleInputChange={handleInputChange} />
           <SearchButton handleButtonClick={handleButtonClick} />
         </div>
@@ -103,19 +103,10 @@ export default function Home() {
         <WarningMessage isValid={isValid} />
       </form>
 
-      {/* <CountryCard 
-        name={selectedCountry.name}
-        dialCode={selectedCountry.dialCode}
-        capital={selectedCountry.capital}
-        officialLanguage={selectedCountry.officialLanguage}
-        currency={selectedCountry.currency} 
-        twoLetterCode={selectedCountry.twoLetterCode} 
-        Summary={selectedCountry.Summary}
-        /> */}
-
+      {/* Modal */}
       <div className={`fixed top-0 left-0 w-full h-full flex items-center justify-center ${isModalOpen ? 'block' : 'hidden'}`}>
         <div className="absolute top-0 left-0 w-full h-full" onClick={() => setIsModalOpen(false)}></div>
-        <div className="relative backdrop-blur-xl shadow-md rounded-lg lg:max-w-2xl mx-auto overflow-hidden w-8/12">
+        <div className="relative backdrop-blur-2xl shadow-md rounded-lg lg:max-w-2xl sm:max-w-xl w-full mx-auto overflow-hidden">
         <button
           onClick={() => setIsModalOpen(false)}
           className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 cursor-pointer"
