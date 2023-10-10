@@ -47,7 +47,7 @@ export default function Home() {
         await getCountryByName(inputValue);
     } else {
         setIsValid(false);
-        setSelectedCountry({name: 'Unknown', dialCode: 'Unknown', capital: 'Unknown', officialLanguage: 'Unknown', currency: { symbol: 'Unknown', isoCode: 'Unknown',},});
+        setSelectedCountry({name: 'Unknown', dialCode: 'Unknown', capital: 'Unknown', officialLanguage: 'Unknown', currency: { symbol: 'Unknown', isoCode: 'Unknown',}, twoLetterCode: 'Unknown', Summary: 'Unknown'});
     }
   }, [inputValue]);
 
@@ -58,7 +58,7 @@ export default function Home() {
   }
 
   // DATABASEEEE
-  const [selectedCountry, setSelectedCountry] = useState({name: 'Unknown', dialCode: 'Unknown', capital: 'Unknown', officialLanguage: 'Unknown', currency: { symbol: 'Unknown', isoCode: 'Unknown',},});
+  const [selectedCountry, setSelectedCountry] = useState({name: 'Unknown', dialCode: 'Unknown', capital: 'Unknown', officialLanguage: 'Unknown', currency: { symbol: 'Unknown', isoCode: 'Unknown',}, twoLetterCode: 'Unknown', Summary: 'Unknown'});
 
   const getCountryByName = async (name: string) => {
     try {
@@ -77,7 +77,7 @@ export default function Home() {
 
     } catch (error) {
       console.log(error);
-      setSelectedCountry({name: 'Unknown', dialCode: 'Unknown', capital: 'Unknown', officialLanguage: 'Unknown', currency: { symbol: 'Unknown', isoCode: 'Unknown',},});
+      setSelectedCountry({name: 'Unknown', dialCode: 'Unknown', capital: 'Unknown', officialLanguage: 'Unknown', currency: { symbol: 'Unknown', isoCode: 'Unknown',}, twoLetterCode: 'Unknown', Summary: 'Unknown'});
     }
   };
 
@@ -96,12 +96,14 @@ export default function Home() {
       </form>
 
       <CountryCard 
-        name={selectedCountry.name} 
-        dialCode={selectedCountry.dialCode} 
-        capital={selectedCountry.capital} 
-        officialLanguage={selectedCountry.officialLanguage} 
-        currency={selectedCountry.currency}
-      />
+        name={selectedCountry.name}
+        dialCode={selectedCountry.dialCode}
+        capital={selectedCountry.capital}
+        officialLanguage={selectedCountry.officialLanguage}
+        currency={selectedCountry.currency} 
+        twoLetterCode={selectedCountry.twoLetterCode} 
+        Summary={selectedCountry.Summary}
+        />
 
     </main>
   );

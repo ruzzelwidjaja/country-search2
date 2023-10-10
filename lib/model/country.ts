@@ -9,7 +9,9 @@ const countrySchema = new mongoose.Schema({
   currency: {
     symbol: String,
     isoCode: String,
-  }
+  },
+  twoLetterCode: String,
+  Summary: String,
 });
 
 export default mongoose.models.Country || mongoose.model('Country', countrySchema);

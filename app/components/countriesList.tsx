@@ -16,7 +16,7 @@ export const CountriesList: React.FC<CountriesListProps> = ({ filteredCountries,
           className="p-2 pl-11 hover:bg-gray-200 cursor-pointer"
           onClick={() => handleCountryClick(country.name)}
           style={{ 
-            backgroundImage: `url(/continents/${country.continent}.svg)`, 
+            backgroundImage: `url(icons/continents/${country.continent}.svg)`, 
             backgroundRepeat: 'no-repeat', 
             backgroundPosition: '7px center', 
             backgroundSize: '7%' }}
