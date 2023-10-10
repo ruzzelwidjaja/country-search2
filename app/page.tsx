@@ -49,7 +49,7 @@ export default function Home() {
         await getCountryByName(inputValue);
     } else {
         setIsValid(false);
-        setSelectedCountry({name: 'Unknown', dialCode: 'Unknown', capital: 'Unknown', officialLanguage: 'Unknown', currency: { symbol: 'Unknown', isoCode: 'Unknown',}, twoLetterCode: 'Unknown', Summary: 'Unknown'});
+        setSelectedCountry({name: 'Unknown', dialCode: 'Unknown', capital: 'Unknown', officialLanguage: 'Unknown', currency: { symbol: 'Unknown', isoCode: 'Unknown',}, twoLetterCode: 'ID', Summary: 'Unknown'});
     }
   }, [inputValue]);
 
@@ -66,7 +66,7 @@ export default function Home() {
     capital: 'Unknown', 
     officialLanguage: 'Unknown', 
     currency: { symbol: 'Unknown', isoCode: 'Unknown',}, 
-    twoLetterCode: 'Unknown', 
+    twoLetterCode: 'ID', 
     Summary: 'Unknown'
   });
 
@@ -85,7 +85,7 @@ export default function Home() {
 
     } catch (error) {
       console.log(error);
-      setSelectedCountry({name: 'Unknown', dialCode: 'Unknown', capital: 'Unknown', officialLanguage: 'Unknown', currency: { symbol: 'Unknown', isoCode: 'Unknown',}, twoLetterCode: 'Unknown', Summary: 'Unknown'});
+      setSelectedCountry({name: 'Unknown', dialCode: 'Unknown', capital: 'Unknown', officialLanguage: 'Unknown', currency: { symbol: 'Unknown', isoCode: 'Unknown',}, twoLetterCode: 'ID', Summary: 'Unknown'});
     }
   };
 
@@ -95,13 +95,16 @@ export default function Home() {
     <main className="min-h-screen flex flex-col items-center justify-center bg-[url('/background_images/clouds2.jpg')] bg-cover bg-center h-screen">
       <Header />
       <form className="w-96 flex flex-col items-center relative">
-        <div className="flex mb-2 w-11/12">
-          <SearchInput inputValue={inputValue} isValid={isValid} handleInputChange={handleInputChange} />
-          <SearchButton handleButtonClick={handleButtonClick} />
+        <div className="flex flex-col w-11/12 mb-2">
+          <div className="flex mb-2">
+            <SearchInput inputValue={inputValue} isValid={isValid} handleInputChange={handleInputChange} />
+            <SearchButton handleButtonClick={handleButtonClick} />
+          </div>
+          <WarningMessage isValid={isValid} />
         </div>
         <CountriesList filteredCountries={filteredCountries} handleCountryClick={handleCountryClick} />
-        <WarningMessage isValid={isValid} />
       </form>
+
 
       {/* Modal */}
       <div className={`fixed top-0 left-0 w-full h-full flex items-center justify-center ${isModalOpen ? 'block' : 'hidden'}`}>
