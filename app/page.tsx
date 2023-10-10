@@ -16,13 +16,12 @@ export type CountryData = {
 };
 
 
-
-
 export default function Home() {
 
   const [inputValue, setInputValue] = useState('');
   const [filteredCountries, setFilteredCountries] = useState<CountryData[]>([]);
-  const [isValid, setIsValid] = useState(true);
+  const [isValid, setIsValid] = useState(true); // valid country or not
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const searchQuery = e.target.value;
@@ -44,6 +43,7 @@ export default function Home() {
     if (isValidCountry) {
         console.log('Button Clicked, Submitted value: ', inputValue)
         setIsValid(true);
+        setIsModalOpen(true);
         await getCountryByName(inputValue);
     } else {
         setIsValid(false);
@@ -58,7 +58,15 @@ export default function Home() {
   }
 
   // DATABASEEEE
-  const [selectedCountry, setSelectedCountry] = useState({name: 'Unknown', dialCode: 'Unknown', capital: 'Unknown', officialLanguage: 'Unknown', currency: { symbol: 'Unknown', isoCode: 'Unknown',}, twoLetterCode: 'Unknown', Summary: 'Unknown'});
+  const [selectedCountry, setSelectedCountry] = useState({
+    name: 'Unknown', 
+    dialCode: 'Unknown', 
+    capital: 'Unknown', 
+    officialLanguage: 'Unknown', 
+    currency: { symbol: 'Unknown', isoCode: 'Unknown',}, 
+    twoLetterCode: 'Unknown', 
+    Summary: 'Unknown'
+  });
 
   const getCountryByName = async (name: string) => {
     try {
@@ -95,7 +103,7 @@ export default function Home() {
         <WarningMessage isValid={isValid} />
       </form>
 
-      <CountryCard 
+      {/* <CountryCard 
         name={selectedCountry.name}
         dialCode={selectedCountry.dialCode}
         capital={selectedCountry.capital}
@@ -103,7 +111,30 @@ export default function Home() {
         currency={selectedCountry.currency} 
         twoLetterCode={selectedCountry.twoLetterCode} 
         Summary={selectedCountry.Summary}
-        />
+        /> */}
+
+      <div className={`fixed top-0 left-0 w-full h-full flex items-center justify-center ${isModalOpen ? 'block' : 'hidden'}`}>
+        <div className="absolute top-0 left-0 w-full h-full" onClick={() => setIsModalOpen(false)}></div>
+        <div className="relative backdrop-blur-xl shadow-md rounded-lg lg:max-w-2xl mx-auto overflow-hidden w-8/12">
+        <button
+          onClick={() => setIsModalOpen(false)}
+          className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 cursor-pointer"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+          <CountryCard
+            name={selectedCountry.name}
+            dialCode={selectedCountry.dialCode}
+            capital={selectedCountry.capital}
+            officialLanguage={selectedCountry.officialLanguage}
+            currency={selectedCountry.currency}
+            twoLetterCode={selectedCountry.twoLetterCode}
+            Summary={selectedCountry.Summary}
+          />
+        </div>
+      </div>
 
     </main>
   );
