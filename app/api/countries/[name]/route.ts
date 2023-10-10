@@ -1,5 +1,5 @@
-import connectMongoDB from "@/lib/mongodb";
-import Country from "@/lib/model/country";
+import connectMongoDB from "../../../../lib/mongodb";
+import Country from "../../../../lib/model/country";
 import { NextResponse } from "next/server";
 
 
