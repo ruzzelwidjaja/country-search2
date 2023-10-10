@@ -13,7 +13,7 @@ export const CountriesList: React.FC<CountriesListProps> = ({ filteredCountries,
       {filteredCountries.map((country) => (
         <li 
           key={country.name} 
-          className="p-2 pl-11 hover:bg-gray-200 cursor-pointer"
+          className="p-2 pl-11 hover:bg-indigo-400 cursor-pointer"
           onClick={() => handleCountryClick(country.name)}
           style={{ 
             backgroundImage: `url(icons/continents/${country.continent}.svg)`, 
