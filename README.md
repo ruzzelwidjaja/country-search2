@@ -7,8 +7,8 @@ This web application provides detailed information about countries. Users can se
 
 
 <div style="display: flex; justify-content: space-around;">
-  <img src="./readmeDemo/wide.gif" alt="Demo Wide" width="614" />
-  <img src="./readmeDemo/mobile.gif" alt="Demo Mobile" width="188" />
+  <img src="./readmeDemo/wide.gif" alt="Demo Wide" width="572" />
+  <img src="./readmeDemo/mobile.gif" alt="Demo Mobile" width="192" />
 </div>
 
 <!-- ![Alt Text](/readmeDemo/mobile.gif) -->
