@@ -12,9 +12,10 @@ export const SearchInput: React.FC<searchInputProps> = ({ inputValue, isValid, h
       type="text"
       value={inputValue}
       onChange={handleInputChange}
-      className={`text-black shadow-lg w-full p-2 border-2 rounded-md pl-10 bg-gray-200 placeholder-gray-500 
-                  focus:border-3 focus:bg focus:outline-none  
-                  ${!isValid ? 'border-red-500' : 'focus:border-indigo-500 focus:border-[3px]'}`
+      className={`text-black shadow-lg w-full p-2 rounded-md pl-10 bg-gray-200 placeholder-indigo-400 
+                  border border-transparent focus:border-indigo-500 focus:outline-none border-2
+                  transition-all duration-[50ms]
+                  ${!isValid && 'border-red-500'}`
                 }
       placeholder="Search for a country"
       style={{ 

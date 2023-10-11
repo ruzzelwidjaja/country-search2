@@ -105,7 +105,7 @@ export default function Home() {
         <CountriesList filteredCountries={filteredCountries} handleCountryClick={handleCountryClick} />
       </form>
 
-
+      
       {/* Modal */}
       <div className={`fixed top-0 left-0 w-full h-full flex items-center justify-center ${isModalOpen ? 'block' : 'hidden'}`}>
         <div className="absolute top-0 left-0 w-full h-full" onClick={() => setIsModalOpen(false)}></div>
