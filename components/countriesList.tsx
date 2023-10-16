@@ -1,6 +1,6 @@
 // components/CountriesList.tsx
 import React from 'react';
-import { CountryData } from '../page';
+import { CountryData } from '../app/page';
 
 type CountriesListProps = {
   filteredCountries: CountryData[];

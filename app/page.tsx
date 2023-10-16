@@ -1,7 +1,7 @@
 'use client' // To use Client Side Rendering. Default is Server Side Rendering
 
 import React, { useState, useCallback,} from 'react';
-import { countries_list } from './config/countries_list';
+import { countries_list } from '../lib/config/countries_list';
 import { 
   Header, 
   SearchInput, 
@@ -9,7 +9,8 @@ import {
   CountriesList, 
   WarningMessage, 
   CountryCard 
-} from './components/index';
+} from '../components/index';
+import ModeToggle from '@/components/ui/darkModeToggle';
 
 
 export type CountryData = {
@@ -25,6 +26,7 @@ export default function Home() {
   const [isValid, setIsValid] = useState(true); // valid country or not
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  // To update what is on the input field, and update the dropdown list
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const searchQuery = e.target.value;
     setInputValue(searchQuery);
@@ -43,7 +45,7 @@ export default function Home() {
     );
 
     if (isValidCountry) {
-        console.log('Button Clicked, Submitted value: ', inputValue)
+        // console.log('Button Clicked, Submitted value: ', inputValue)
         setIsValid(true);
         setIsModalOpen(true);
         await getCountryByName(inputValue);
@@ -53,9 +55,10 @@ export default function Home() {
     }
   }, [inputValue]);
 
+  // When a country from the dropdown list is clicked
   const handleCountryClick = (country: string) => {
     setInputValue(country);
-    setFilteredCountries([]);
+    setFilteredCountries([]); // to clear the dropdown list
     setIsValid(true); // to reset validation state when a country is clicked
   }
 
@@ -81,7 +84,7 @@ export default function Home() {
       // return res.json();
       const countryData = await res.json();
       setSelectedCountry(countryData.country);
-      console.log(countryData.country.name)
+      // console.log(countryData.country.name)
 
     } catch (error) {
       console.log(error);
@@ -92,7 +95,10 @@ export default function Home() {
 
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center bg-[url('/background_images/clouds2.jpg')] bg-cover bg-center h-screen">
+    <main className="min-h-screen flex flex-col items-center justify-center bg-cover bg-center h-screen">
+      <div style={{ position: 'fixed', top: '1rem', right: '1rem' }}>
+        <ModeToggle />
+      </div>
       <Header />
       <form className="w-96 flex flex-col items-center relative">
         <div className="flex flex-col w-11/12 mb-2">
@@ -105,7 +111,7 @@ export default function Home() {
         <CountriesList filteredCountries={filteredCountries} handleCountryClick={handleCountryClick} />
       </form>
 
-      
+
       {/* Modal */}
       <div className={`fixed top-0 left-0 w-full h-full flex items-center justify-center ${isModalOpen ? 'block' : 'hidden'}`}>
         <div className="absolute top-0 left-0 w-full h-full" onClick={() => setIsModalOpen(false)}></div>

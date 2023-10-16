@@ -1,8 +1,8 @@
 import { Header } from './header';
-import { SearchInput } from './searchInput';
-import { SearchButton } from './searchButton';
+import { SearchInput } from './ui/searchInput';
+import { SearchButton } from './ui/searchButton';
 import { CountriesList } from './countriesList';
-import { WarningMessage } from './warningMessage';
+import { WarningMessage } from './ui/warningMessage';
 import CountryCard from './countryCard';
 
 export {
