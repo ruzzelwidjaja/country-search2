@@ -20,6 +20,9 @@ module.exports = {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
+        icon: "hsl(var(--icon-color))",
+        cardText: "hsl(var(--cardText))",
+        listHover: "hsl(var(--listHover))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
@@ -50,6 +53,8 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        inputbg: "hsl(var(--input-bg-color))",
+        placeholder: "hsl(var(--input-placeholder))",
       },
       borderRadius: {
         lg: "var(--radius)",

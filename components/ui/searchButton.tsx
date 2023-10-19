@@ -8,7 +8,7 @@ export const SearchButton: React.FC<searchButtonProps> = memo(({ handleButtonCli
   return (
     <button 
       type="button" 
-      className="shadow-2xl w-24 ml-2 px-2 py-1.5 bg-indigo-500 text-white p-2 rounded-md hover:bg-indigo-400 font-bold"
+      className="shadow-2xl w-24 ml-2 px-2 py-1.5 bg-indigo-500 text-primary-foreground p-2 rounded-md hover:bg-indigo-400 font-bold"
       onClick={handleButtonClick}
     >
       Go
